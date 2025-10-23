@@ -8,12 +8,17 @@ const Video = () => {
   const [isPause, setIsPause] = useState<boolean>(false)
  
   const playVideo = () => {
-    if(!isClicked) setIsClicked(true)
+    if (!videoRef.current) {
+      return
+    }
+
+    if(!isClicked) {
+      videoRef.current.muted = false
+      setIsClicked(true)
+    }
     
     setIsPause(false)
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
+    videoRef.current.play();
   }
 
   const pauseVideo = () => {
@@ -57,7 +62,8 @@ const Video = () => {
             preload="auto"
             autoPlay={false}
             playsInline
-            webkit-playsinline
+            muted
+            webkit-playsinline="true"
             ref={videoRef}
             onClick={handleVideo}
           >
