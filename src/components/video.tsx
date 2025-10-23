@@ -53,7 +53,7 @@ const Video = () => {
   }
 
   return (
-    <motion.div variants={videoMotionVariants} initial="hidden" animate="visible">
+    <motion.div variants={videoMotionVariants} initial="hidden" animate="visible" className="flex absolute top-1/2 left-1/2 -translate-1/2 w-full h-full">
       <div className="absolute top-1/2 left-1/2 -translate-1/2 w-full h-full p-[1rem] md:p-[5rem] cursor-pointer">
       {/* <h2 className="text-lg font-bold text-white">01. A Weekend away in Hilston, Australia</h2> */}
         <video
