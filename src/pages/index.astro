@@ -1,16 +1,39 @@
 ---
-
+import Preloader from "../components/Preloader";
+import '../styles/global.css'
+import Video from "../components/video"
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/nat-logo.png" />
+		<!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> -->
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Dear Natalie</title>
+
+		<style is:global>
+			/* Apply Noto Sans Japanese globally */
+			body {
+					/* font-family: 'Noto Sans JP', sans-serif; */
+					font-family: 'Lato', sans-serif;
+			}
+		</style>
+
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<main class="bg-black w-screen h-screen">
+			<Preloader client:visible />
+			<Video client:visible />
+
+			<div class="bg">
+				<div class="noise__bg" />
+				<div class="noise__bg" />
+				<!-- <div class="noise__bg" /> -->
+			</div>
+		</main>
 	</body>
 </html>
