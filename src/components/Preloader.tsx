@@ -46,31 +46,29 @@ const Preloader = () => {
   }
 
   return (
-    <AnimatePresence>
-      <div className="bg-black w-screen h-screen text-white text-center">
-        <div className="flex justify-center items-center text-lg md:text-xl w-full h-full">
-          <motion.h3 variants={sentenceOne} initial='hidden' animate='visible' className="absolute top-1/2 left-1/2 -translate-1/2">
-            {
-              linesOne.split("").map((char, index) => (
-                <motion.span key={`letterone-${char}-${index}`} variants={letter}>
-                  {char}
-                </motion.span>
-              ))
-            }
-          </motion.h3>
+    <div className="bg-black w-screen h-screen text-white text-center">
+      <div className="flex justify-center items-center text-lg md:text-xl w-full h-full">
+        <motion.h3 variants={sentenceOne} initial='hidden' animate='visible' className="absolute top-1/2 left-1/2 -translate-1/2">
+          {
+            linesOne.split("").map((char, index) => (
+              <motion.span key={`letterone-${char}-${index}`} variants={letter}>
+                {char}
+              </motion.span>
+            ))
+          }
+        </motion.h3>
 
-          <motion.h3 variants={sentenceTwo} initial='hidden' animate='visible' className="absolute top-1/2 left-1/2 -translate-1/2">
-            {
-              linesTwo.split("").map((char, index) => (
-                <motion.span key={`lettertwo-${char}-${index}`} variants={letter}>
-                  {char}
-                </motion.span>
-              ))
-            }
-          </motion.h3>
-        </div>
+        <motion.h3 variants={sentenceTwo} initial='hidden' animate='visible' className="absolute top-1/2 left-1/2 -translate-1/2">
+          {
+            linesTwo.split("").map((char, index) => (
+              <motion.span key={`lettertwo-${char}-${index}`} variants={letter}>
+                {char}
+              </motion.span>
+            ))
+          }
+        </motion.h3>
       </div>
-    </AnimatePresence>
+    </div>
 
   )
 }
