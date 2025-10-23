@@ -57,6 +57,7 @@ const Video = () => {
             preload="auto"
             autoPlay={false}
             playsInline
+            webkit-playsinline
             ref={videoRef}
             onClick={handleVideo}
           >
