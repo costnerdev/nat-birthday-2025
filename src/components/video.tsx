@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, type Variants } from "motion/react"
 import { Pause, Play } from "lucide-react";
 
@@ -8,35 +8,37 @@ const Video = () => {
   const [isPause, setIsPause] = useState<boolean>(false)
  
   const playVideo = () => {
-    if (!videoRef.current) {
-      return
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (!isClicked) {
+      video.muted = false;
+      setIsClicked(true);
     }
 
-    if(!isClicked) {
-      videoRef.current.muted = false
-      setIsClicked(true)
-    }
-    
-    setIsPause(false)
-    videoRef.current.play();
-  }
+    setIsPause(false);
+    video.play();
+  };
 
   const pauseVideo = () => {
-    setIsPause(true)
-    if(videoRef.current) {
-      videoRef.current.pause()
-    }
-  }
+    const video = videoRef.current;
+    if (!video) return;
+
+    setIsPause(true);
+    video.pause();
+  };
 
   const handleVideo = () => {
-    if (!videoRef.current) return
-    
-    if (isPause) {
-      playVideo()
-    } else {
-      pauseVideo()
-    }
-  }
+    if (!videoRef.current) return;
+
+    isPause ? playVideo() : pauseVideo();
+  };
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+
+    videoRef.current.pause()  
+  }, [])
 
   const videoMotionVariants: Variants = {
     hidden: { opacity: 0 },
@@ -60,7 +62,7 @@ const Video = () => {
             id="natVideo"
             controls={false}
             preload="auto"
-            autoPlay={false}
+            autoPlay
             playsInline
             muted
             webkit-playsinline="true"
